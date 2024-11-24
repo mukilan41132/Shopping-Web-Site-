@@ -1,17 +1,47 @@
-<%- include('../include/head'),{pageTitle:'SignUp'} %>
+<%- include('../../shares/includes/head',{pageTitle:'SignUp'}) %>
+
+    <link rel="stylesheet" href="Style/auth.css">
+    <link rel="stylesheet" href="Style/form.css">
     </head>
 
     <body>
-        <%- include('../include/header') %>
+        <%- include('../../shares/includes/header') %>
             <main>
                 <h1>create New Account</h1>
-                <form action="" method="">
-                    
-                    <input type="text">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                    <input type="password">
-                    <input type="text">
+                <form action="/signUp" method="post">
+                    <input type="hidden" name="_csrf" value="<%= locals.csrftoken %>">
+                    <p>
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </p>
+                    <p>
+                        <label for="email">Confirm E-mail</label>
+                        <input type="email" id="ConfirmEmail" name="ConfirmEmail" required>
+                    </p>
+                    <p>
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" minlength="6" maxlength="14">
+                    </p>
+                    <hr />
+                    <p>
+                        <label for="fullname">Full Name</label>
+                        <input type="text" id="fullname" name="fullname" required>
+                    </p>
+
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" required>
+
+                    <p>
+                        <label for="postalcode">Postal Code</label>
+                        <input type="text" id="postalcode" name="postalcode" required>
+                    </p>
+                    <p>
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city" required>
+                    </p>
+
+                    <button class="btn">Create New Account </button>
+                    <p><a href="/login"> Login Instead</a></p>
                 </form>
             </main>
-            <%- include('../include/footer') %>
+            <%- include('../../shares/includes/footer') %>
