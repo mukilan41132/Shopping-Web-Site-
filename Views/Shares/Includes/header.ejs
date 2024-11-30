@@ -1,0 +1,16 @@
+<header>
+    <div><a href="/"></a></div>
+    <nav>
+        <ul>
+            <% if (locals.isAuth) { %>
+                <li>
+                    <form action="/logout" method="POST">
+                        <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+                        <button>logout</button>
+                    </form>
+
+                </li>
+                <% } %>
+        </ul>
+    </nav>
+</header>
