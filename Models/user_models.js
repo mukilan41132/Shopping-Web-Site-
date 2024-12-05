@@ -1,5 +1,7 @@
 const mongodb = require('../DataBaseConnection/MongoDbConnection');
 
+
+
 const bcript = require('bcryptjs');
 
 class User {
@@ -12,6 +14,27 @@ class User {
             postalcode: postalcode,
             city: city
         };
+    }
+
+    EmailValidation() {
+        return mongodb.getDb().collection('users').findOne({
+            email: this.email
+        })
+    }
+    async existingemail() {
+        const existinguser = await this.EmailValidation();
+
+        if (existinguser) {
+            console.log("existingusert",existinguser)
+            return true
+        } else {
+            console.log("existinguserf",existinguser)
+            return false
+        }
+       
+    }
+    passwordValidation(decriptpassword) {
+        return bcript.compare(this.password, decriptpassword);
     }
     async Signup() {
         const encriptedPassword = await bcript.hash(this.password, 12);

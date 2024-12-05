@@ -1,0 +1,10 @@
+# Ignore everything
+
+node_modules/
+
+# Allow specific files
+!.gitignore
+!package.json
+!*.js
+!*.html
+!src/

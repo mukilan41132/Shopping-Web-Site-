@@ -8,21 +8,31 @@
         <%- include('../../shares/includes/header') %>
             <main>
                 <h1>Login</h1>
-                <form action="/login" method="post">
-                    <input type="hidden" name="_csrf" value="<%= locals.csrftoken %>">
-                    <p>
-                        <label for="email">E-mail</label>
-                        <input type="email" id="email" name="email" required>
-                    </p>
+                <% if (inputdata.errorMessage) { %>
 
-                    <p>
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password" minlength="6" maxlength="14">
-                    </p>
-                    <hr />
+                    <section class="alert">
+                        <h2>
+                            <%= inputdata.errorMessage %>
+                        </h2>
+                    </section>
+                    <% } %>
+                        <form action="/login" method="POST">
+                            <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
 
-                    <button class="btn">Login </button>
-                    <p><a href="/signUp">If You don't have Account | SignUp</a></p>
-                </form>
+                            <p>
+                                <label for="email">E-mail</label>
+                                <input type="email" id="email" name="email" required value="<%=inputdata.email %>">
+                            </p>
+
+                            <p>
+                                <label for="password">Password</label>
+                                <input type="password" id="password" name="password" minlength="6" maxlength="14"
+                                    value="<%=inputdata.password %>">
+                            </p>
+                            <hr />
+
+                            <button class="btn">Login </button>
+                            <p><a href="/signUp">If You don't have Account | SignUp</a></p>
+                        </form>
             </main>
             <%- include('../../shares/includes/footer') %>
