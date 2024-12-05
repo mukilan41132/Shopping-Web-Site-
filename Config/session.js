@@ -18,7 +18,11 @@ function createSessionConfig() {
         saveUninitialized: false,
         store: createsessionStore(),
         cookie: {
+<<<<<<< HEAD
             maxAge: 24 * 60 * 60 * 1000
+=======
+            maxAge: 60 * 1000
+>>>>>>> 686eb2820472157af6ca1acd19cac1218fee34af
         }
     };
 }
