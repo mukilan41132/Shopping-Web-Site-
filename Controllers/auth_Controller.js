@@ -1,7 +1,6 @@
 const Users = require("../Models/user_models");
 const authentication = require('../Utils/authentication');
 const validation = require('../Utils/Validation');
-<<<<<<< HEAD
 const SessionFlash = require('../Utils/session-flash');
 
 function getSignup(req, res) {
@@ -58,31 +57,6 @@ async function signup(req, res, next) {
 
 
 
-=======
-
-
-function getSignup(req, res) {
-    res.render('Customer/Auth/signUp');
-}
-
-async function signup(req, res) {
-
-    if (!validation.UserDetailsvalidation(
-        req.body.email,
-        req.body.password,
-        req.body.fullname,
-        req.body.address,
-        req.body.postalcode,
-        req.body.city
-    ) || validation.emailcheck(
-        req.body.email, req.body.ConfirmEmail
-    )
-    ) {
-        res.redirect('/signup');
-        return;
-    }
-
->>>>>>> 686eb2820472157af6ca1acd19cac1218fee34af
     const users = new Users(
         req.body.email,
         req.body.password,
@@ -94,7 +68,6 @@ async function signup(req, res) {
 
     try {
         const existAlredy = await users.existingemail();
-<<<<<<< HEAD
      
         if (existAlredy) {
             SessionFlash.flashDataSession(req, {
@@ -103,11 +76,6 @@ async function signup(req, res) {
             }, function () {
                 res.redirect('/signup');
             });
-=======
-
-        if(existAlredy){
-            res.redirect('/signup');
->>>>>>> 686eb2820472157af6ca1acd19cac1218fee34af
             return;
         }
         await users.Signup();
@@ -119,7 +87,6 @@ async function signup(req, res) {
 
     res.redirect('/login')
 }
-<<<<<<< HEAD
 
 function getLogin(req, res) {
     let sessionData = SessionFlash.getSessionData(req);
@@ -130,10 +97,6 @@ function getLogin(req, res) {
         }
     }
     res.render('Customer/Auth/login', { inputdata: sessionData });
-=======
-function getLogin(req, res) {
-    res.render('Customer/Auth/login');
->>>>>>> 686eb2820472157af6ca1acd19cac1218fee34af
 }
 async function login(req, res) {
 
@@ -151,7 +114,6 @@ async function login(req, res) {
         next(error);
         return;
     }
-<<<<<<< HEAD
     const sessionErrorData = {
         errorMessage: 'Invalid credencials-pls double check',
         email: users.email,
@@ -162,21 +124,13 @@ async function login(req, res) {
             res.redirect('/login');
         })
 
-=======
-    if (!existinguser) {
-        res.redirect('/login');
->>>>>>> 686eb2820472157af6ca1acd19cac1218fee34af
         return;
     }
     const existingpassword = await users.passwordValidation(existinguser.password);
     if (!existingpassword) {
-<<<<<<< HEAD
         SessionFlash.flashDataSession(req, sessionErrorData, function () {
             res.redirect('/login');
         })
-=======
-        res.redirect('/login');
->>>>>>> 686eb2820472157af6ca1acd19cac1218fee34af
         return;
     }
     authentication.createUserSession(req, existinguser, function () {

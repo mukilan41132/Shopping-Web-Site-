@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require('path');
 const authRouts = require('./Routes/auth-routes');
+const AdminProductRouts = require('./Routes/admin-routs');
 const productsRouts = require('./Routes/products-routs');
 const baseRouts = require('./Routes/basic-routs');
 const Mongodb = require('./DataBaseConnection/MongoDbConnection');
@@ -32,7 +33,9 @@ app.use(checkauth);
 
 app.use(baseRouts);
 app.use(authRouts);
+
 app.use(productsRouts);
+app.use('/main', AdminProductRouts);
 
 app.use(ErrorHandler);
 
