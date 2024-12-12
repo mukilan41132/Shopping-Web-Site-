@@ -1,0 +1,38 @@
+<%- include('../../shares/includes/head',{pageTitle:'Add New Products'}) %>
+    <link rel="stylesheet" href="/Style/form.css">
+    </head>
+
+    <body>
+        <%- include('../../shares/includes/header') %>
+            <main>
+                <h1>Add New Product </h1>
+                <form action="/main/products?_csrf=<%= locals.csrfToken %>" method="post" enctype="multipart/form-data">
+                    <p>
+                        <lable for="title">Product Title</lable>
+                        <input type="text" id="title" name="title" required>
+                    </p>
+                    <p>
+                        <lable for="image">Product Image</lable>
+                        <input type="file" id="image" name="image">
+                    </p>
+                    <p>
+                        <lable for="summary">Product Summary</lable>
+                        <input type="text" id="Summary" name="Summary" required maxlength="250">
+                    </p>
+                    <p>
+                        <lable for="number">Product price</lable>
+                        <input type="number" id="price" name="price" required min="0.01" step="0.01">
+                    </p>
+                    <p>
+                        <lable for="Description">Product Description</lable>
+                        <textarea type="number" id="Description" name="Description" required rows="7"></textarea>
+                    </p>
+                    <p>
+                        <button type="reset" class="btn btn-alt">Reset</button>
+                        <button class="btn"> Save</button>
+                    </p>
+                </form>
+
+
+            </main>
+            <%- include('../../shares/includes/footer') %>
