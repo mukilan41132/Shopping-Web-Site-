@@ -6,6 +6,9 @@ const routers = express.Router();
 routers.get('/products', adminController.getproducts);
 routers.get('/products/new', adminController.getNewproducts);
 
-routers.post('/products',imageuplode,adminController.CreateNewProducts)
+routers.post('/products', imageuplode, adminController.CreateNewProducts);
+routers.get('/products/:id', adminController.getUpdtateProductid);
+routers.post('/products/:id', adminController.UpdtateProductid);
+
 
 module.exports = routers;
