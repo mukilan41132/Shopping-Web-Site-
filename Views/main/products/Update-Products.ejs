@@ -1,11 +1,12 @@
 <%- include('../../shares/includes/head',{pageTitle:'Update Products'}) %>
     <link rel="stylesheet" href="/Style/form.css">
+    <script src="/Script/Image-preview.js" defer></script>
     </head>
 
     <body>
         <%- include('../../shares/includes/header') %>
             <main>
                 <h1>UpdateProduct </h1>
-                <%- include('Include/Product-form',{SubmitPath:'/main/products'+productByid.id,productByid:productByid}) %>
+                <%- include('Include/Product-form',{SubmitPath:'/main/products/'+productByid.id,productByid:productByid,imagerequired:false}) %>
             </main>
             <%- include('../../shares/includes/footer') %>

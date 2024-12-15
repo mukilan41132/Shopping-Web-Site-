@@ -1,12 +1,13 @@
 <%- include('../../shares/includes/head',{pageTitle:'Add New Products'}) %>
     <link rel="stylesheet" href="/Style/form.css">
+    <script src="/Script/Image-preview.js" defer></script>
     </head>
 
     <body>
         <%- include('../../shares/includes/header') %>
             <main>
                 <h1>Add New Product </h1>
-                <%- include('Include/Product-form',{SubmitPath:'/main/products',productByid:{ title: '' , summary: '' ,
-                    price: '' , description: "" }}) %>
+                <%- include('Include/Product-form', {SubmitPath:'/main/products', productByid: { title: '' , summary: ''
+                    , price: '' , description: "" },imagerequired:true}) %>
             </main>
             <%- include('../../shares/includes/footer') %>

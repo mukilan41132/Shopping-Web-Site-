@@ -1,8 +1,9 @@
-h1{
+h1 {
     text-align: center;
     color: var(--color-gray-300);
 }
-form{
+
+form {
     max-width: 25rem;
     margin: var(--space-8) auto;
     padding: var(--space-4);
@@ -10,30 +11,51 @@ form{
     border-radius: var(--border-radius-medium);
     text-align: center;
 }
-form a{
+
+form a {
     color: var(--color-primary-200);
 }
 
 form a:hover,
-form a:active{
+form a:active {
     color: var(--color-primary-400);
 }
 
-form hr{
+form hr {
     border-color: var(--color-primary-200);
-    margin:var(--space-4);
+    margin: var(--space-4);
 }
 
-label{
+label {
     color: var(--color-gray-100);
     display: block;
     margin-bottom: var(--space-2);
 
 }
-input,textarea{
+
+input,
+textarea {
     font: inherit;
     padding: var(--space-2);
     border-radius: var(--border-radius-small);
     border: none;
     width: 90%;
+}
+
+#img-preview {
+    display: flex;
+    align-items: center;
+
+}
+
+#img-preview input {
+    max-width: 15rem;
+}
+
+#img-preview img {
+    display: none;
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+    border-radius: var(--border-radius-small);
 }

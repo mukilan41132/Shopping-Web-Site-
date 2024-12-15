@@ -3,10 +3,16 @@
         <lable for="title">Product Title</lable>
         <input type="text" id="title" name="title" value="<%= productByid.title %>" required>
     </p>
-    <p>
-        <lable for="image">Product Image</lable>
-        <input type="file" id="image" name="image">
-    </p>
+    <div id="img-preview">
+        <p>
+            <lable for="image">Product Image</lable>
+            <input type="file" id="image" name="image" <% if (imagerequired) { %>
+            required
+            <% } %>
+                >
+        </p>
+        <img src="" alt="">
+    </div>
     <p>
         <lable for="summary">Product Summary</lable>
         <input type="text" id="Summary" name="Summary" required maxlength="250" value="<%= productByid.summary %>">
@@ -17,7 +23,8 @@
     </p>
     <p>
         <lable for="Description">Product Description</lable>
-        <textarea type="number" id="Description" name="Description" required rows="7"><%= productByid.description %></textarea>
+        <textarea type="number" id="Description" name="Description" required
+            rows="7"><%= productByid.description %></textarea>
     </p>
     <p>
         <button type="reset" class="btn btn-alt">Reset</button>

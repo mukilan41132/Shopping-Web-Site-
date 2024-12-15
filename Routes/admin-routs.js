@@ -8,7 +8,7 @@ routers.get('/products/new', adminController.getNewproducts);
 
 routers.post('/products', imageuplode, adminController.CreateNewProducts);
 routers.get('/products/:id', adminController.getUpdtateProductid);
-routers.post('/products/:id', adminController.UpdtateProductid);
+routers.post('/products/:id', imageuplode, adminController.UpdtateProductid);
 
 
 module.exports = routers;
