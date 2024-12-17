@@ -11,6 +11,7 @@ const CsrfToken = require('./Middlewares/csrf-token');
 const expressSession = require('express-session')
 const configsession = require('./Config/session')
 const checkauth = require('./Middlewares/check-auth');
+const protuctRouts = require('./Middlewares/routeprotection')
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -34,8 +35,8 @@ app.use(checkauth);
 
 app.use(baseRouts);
 app.use(authRouts);
-
 app.use(productsRouts);
+app.use(protuctRouts)
 app.use('/main', AdminProductRouts);
 
 app.use(ErrorHandler);

@@ -9,6 +9,6 @@ routers.get('/products/new', adminController.getNewproducts);
 routers.post('/products', imageuplode, adminController.CreateNewProducts);
 routers.get('/products/:id', adminController.getUpdtateProductid);
 routers.post('/products/:id', imageuplode, adminController.UpdtateProductid);
-
+routers.delete('/products/:id', adminController.deleteProduct)
 
 module.exports = routers;

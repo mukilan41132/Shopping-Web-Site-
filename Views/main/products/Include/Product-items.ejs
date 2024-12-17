@@ -6,7 +6,7 @@
         </h2>
         <div class="product-action">
             <a class="btn btn-alt" href="/main/products/<%=data.id%>">View&Edit</a>
-            <button class="btn btn-alt">Delete</button>
+            <button class="btn btn-alt" data-productid="<%=data.id%>" data-csrf="<%=locals.csrfToken%>">Delete</button>
         </div>
     </div>
 
