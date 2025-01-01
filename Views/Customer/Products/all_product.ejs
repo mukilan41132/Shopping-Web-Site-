@@ -1,10 +1,23 @@
-<%- include('../../shares/includes/head',{pageTitle:'Products'}) %>
+<%- include('../../shares/includes/head',{pageTitle:'buy something'}) %>
+<link rel="stylesheet" href="/Style/Product.css">
     </head>
 
     <body>
         <%- include('../../shares/includes/header') %>
             <main>
-                <h1>successfully login!! main </h1>
+                <h1>Products </h1>
+                <section>
+                    <h2>New Product's in Market</h2>
+                </section>
+                <section>
+                    <ul id="product-grid">
+                        <% for (const data of products){ %>
+                            <li>
+                                <%- include('../../shares/Product-items',{data:data}) %>
+                            </li>
+                            <% } %>
+                    </ul>
+                </section>
 
             </main>
             <%- include('../../shares/includes/footer') %>

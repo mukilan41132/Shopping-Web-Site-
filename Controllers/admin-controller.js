@@ -42,7 +42,7 @@ async function getUpdtateProductid(req, res, next) {
 }
 
 async function UpdtateProductid(req, res, next) {
-    console.log("admincontwww", req.body)
+
 
     const product = new Product({
         ...req.body,
@@ -50,7 +50,7 @@ async function UpdtateProductid(req, res, next) {
         description: req.body.Description,
         _id: req.params.id
     })
-    console.log("admincont", product)
+
     if (req.file) {
         product.replaceImage(req.file.filename)
     }
