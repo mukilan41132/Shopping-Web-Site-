@@ -28,22 +28,26 @@ class Cart {
         this.totalPrice = this.totalPrice + product.price;
     }
     UpdateItem(productId, newQuantity) {
+        console.log(newQuantity)
         for (let i = 0; i < this.items.length; i++) {
             const item = this.items[i];
             if (item.product.id === productId && newQuantity > 0) {
                 const CartItem = { ...item };
                 const quant = newQuantity - this.quantity;
                 CartItem.quantity = newQuantity;
-                CartItem.totalPrice = newQuantity * product.price;
+                CartItem.totalPrice = newQuantity * item.product.price;
                 this.items[i] = CartItem;
 
                 this.totalQuantity = this.totalQuantity + quant;
-                this.totalPrice = quant * product.price;
+                this.totalPrice += quant * item.product.price;
+                return{updatedItemPrice:CartItem.totalPrice};
 
             } else if (item.product.id === productId && newQuantity <= 0) {
                 this.items.slice(i, 1);
                 this.totalQuantity = this.totalQuantity - this.quantity;
                 this.totalPrice -= this.totalPrice;
+                return{updatedItemPrice:0};
+
             }
         }
 

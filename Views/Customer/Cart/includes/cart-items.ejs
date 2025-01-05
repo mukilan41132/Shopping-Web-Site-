@@ -4,11 +4,14 @@
             <%= item.product.title %>
         </h2>
         <p>
-            ₹ <%= item.totalPrice %> <span class="cart-product-price">( ₹ <%= item.product.price %> )</span>
+            ₹ <span class="totalprice">
+                <%= item.totalPrice %>
+            </span>
+            <span class="cart-product-price">( ₹ <%= item.product.price %> )</span>
         </p>
     </div>
-    <div class="cart-item-management">
+    <form class="cart-item-management" data-proid="<%=item.product.id%>" data-csrf="<%=locals.csrfToken%>">
         <input type="number" value="<%= item.quantity %>" required>
         <button class="btn btn-alt">Update</button>
-    </div>
+    </form>
 </article>

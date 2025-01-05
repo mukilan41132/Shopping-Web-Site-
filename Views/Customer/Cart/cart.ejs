@@ -1,5 +1,6 @@
 <%- include('../../shares/includes/head',{pageTitle:'buy something'}) %>
     <link rel="stylesheet" href="/Style/cart.css">
+    <script src="/Script/cart-items-update.js" defer></script>
     </head>
 
     <body>
@@ -15,7 +16,7 @@
 
                 </ul>
                 <div id="cart-total">
-                    <p>Total: ₹<%= locals.cart.totalPrice %>/--
+                    <p>Total:<span id="totalID">₹<%= locals.cart.totalPrice %>/--</span> 
                     </p>
                     <button class="btn"> Buy Product</button>
                 </div>
