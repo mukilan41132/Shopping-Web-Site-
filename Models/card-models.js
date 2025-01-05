@@ -14,8 +14,8 @@ class Cart {
         for (let i = 0; i < this.items.length; i++) {
             const item = this.items[i];
             if (item.product.id === product.id) {
-                cardItem.quantity = cardItem.quantity + 1;
-                cardItem.totalPrice = cardItem.totalPrice + product.price;
+                cardItem.quantity = item.quantity + 1;
+                cardItem.totalPrice = item.totalPrice + product.price;
                 this.items[i] = cardItem;
 
                 this.totalQuantity++;
@@ -27,4 +27,28 @@ class Cart {
         this.totalQuantity++;
         this.totalPrice = this.totalPrice + product.price;
     }
+    UpdateItem(productId, newQuantity) {
+        for (let i = 0; i < this.items.length; i++) {
+            const item = this.items[i];
+            if (item.product.id === productId && newQuantity > 0) {
+                const CartItem = { ...item };
+                const quant = newQuantity - this.quantity;
+                CartItem.quantity = newQuantity;
+                CartItem.totalPrice = newQuantity * product.price;
+                this.items[i] = CartItem;
+
+                this.totalQuantity = this.totalQuantity + quant;
+                this.totalPrice = quant * product.price;
+
+            } else if (item.product.id === productId && newQuantity <= 0) {
+                this.items.slice(i, 1);
+                this.totalQuantity = this.totalQuantity - this.quantity;
+                this.totalPrice -= this.totalPrice;
+            }
+        }
+
+
+    }
 }
+
+module.exports = Cart;

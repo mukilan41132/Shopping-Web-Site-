@@ -1,5 +1,6 @@
 <%- include('../../shares/includes/head',{pageTitle:'buy something'}) %>
     <link rel="stylesheet" href="/Style/Product.css">
+    <script src="/Script/cart-management.js" defer></script>
     </head>
 
     <body>
@@ -13,7 +14,7 @@
                         </h1>
                         <p>$<%= product.price %>
                         </p>
-                        <button class="btn">Add To Cart</button>
+                        <button class="btn" data-productid="<%=product.id  %>"data-csrf="<%= locals.csrfToken %>">Add To Cart</button>
                     </div>
                 </header>
                 <p id="product-description">

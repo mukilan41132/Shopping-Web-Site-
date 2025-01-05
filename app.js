@@ -4,6 +4,7 @@ const authRouts = require('./Routes/auth-routes');
 const AdminProductRouts = require('./Routes/admin-routs');
 const productsRouts = require('./Routes/products-routs');
 const baseRouts = require('./Routes/basic-routs');
+const cartRouts = require('./Routes/cart-routs');
 const Mongodb = require('./DataBaseConnection/MongoDbConnection');
 const csrf = require('csurf');
 const ErrorHandler = require('./Middlewares/error-handler');
@@ -12,7 +13,8 @@ const CsrfToken = require('./Middlewares/csrf-token');
 const expressSession = require('express-session')
 const configsession = require('./Config/session')
 const checkauth = require('./Middlewares/check-auth');
-const protuctRouts = require('./Middlewares/routeprotection')
+const protuctRouts = require('./Middlewares/routeprotection');
+
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -23,6 +25,7 @@ app.use(express.static('public'));
 app.use('/product/assets', express.static('product-data'));
 
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 const sessionConfig = configsession();
 
@@ -38,7 +41,7 @@ app.use(checkauth);
 app.use(baseRouts);
 app.use(authRouts);
 app.use(productsRouts);
-
+app.use('/Cart', cartRouts)
 app.use(protuctRouts)
 app.use('/main', AdminProductRouts);
 

@@ -4,7 +4,8 @@ function initializeCart(req, res, next) {
     if (!req.session.cart) {
         cart = new Cart()
     } else {
-        cart = new Cart(req.session.cart.items);
+        const ses = req.session.cart
+        cart = new Cart(ses.items, ses.totalQuantity, ses.totalPrice);
     }
     res.locals.cart = cart;
 
