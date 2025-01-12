@@ -1,7 +1,7 @@
 const ButtenTargetElement = document.querySelectorAll(".cart-item-management");
 const Badge = document.querySelector('.nav-items .badge');
 
-const CT = document.getElementById('totalID')
+const CT = document.getElementById('totalID');
 async function UpdateMethodAjsx(event) {
     event.preventDefault();
     const form = event.target;
@@ -22,6 +22,7 @@ async function UpdateMethodAjsx(event) {
                 'Content-Type': 'application/json'
             }
         })
+        console.log("response2",response)
       
     } catch (error) {
         console.error('Fetch error:', error);
@@ -31,12 +32,14 @@ async function UpdateMethodAjsx(event) {
         alert('Error: ');
         return;
     }
+
+    console.log("response",response)
     const ResponceData = await response.json();
     const CTP = form.parentElement.querySelector('.totalprice');
     CTP.textContent = ResponceData.updated.updatedItemPrice;
     CT.textContent = ResponceData.updated.newtotalprice;
     Badge.textContent = ResponceData.updated.totalQuantity
-    console.log(ResponceData)
+    console.log("ResponceData",ResponceData)
 }
 console.log(ButtenTargetElement)
 for (const formElement of ButtenTargetElement) {

@@ -16,9 +16,15 @@
 
                 </ul>
                 <div id="cart-total">
-                    <p>Total:<span id="totalID">₹<%= locals.cart.totalPrice %>/--</span> 
+                    <p>Total:<span id="totalID">₹<%= locals.cart.totalPrice %>/--</span>
                     </p>
-                    <button class="btn"> Buy Product</button>
+                    <% if (locals.isAuth) { %>
+                        <button class="btn"> Buy Product</button>
+                        <% }else{ %>
+                            <p>You need to log in to buy a product.</p>
+                            <% }%>
+
+
                 </div>
             </main>
             <%- include('../../shares/includes/footer') %>

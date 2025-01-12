@@ -44,7 +44,7 @@ async function signup(req, res, next) {
 
 
 
-    if (!userDetailsValid || !emailCheckValid) {
+    if (!emailCheckValid) {
         console.log("Validation failed!");
         SessionFlash.flashDataSession(req, {
             error: 'pls check input ',

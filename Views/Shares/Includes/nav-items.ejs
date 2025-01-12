@@ -3,10 +3,7 @@
 
     <% if (!locals.isAuth) { %>
 
-        <li><a href="/">Shop</a></li>
-        <li><a href="/cart">Cart<span class="badge">
-            <%= locals.cart.totalQuantity %>
-        </span></a></li>
+
         <li><a href="/signUp">SignUp</a></li>
         <li><a href="/login">Login</a></li>
         <% } %>
@@ -19,7 +16,10 @@
                         <li><a href="/admin/orders">Manage Orders</a></li>
                         <% } %>
                             <% if (locals.isAuth) { %>
-
+                                <li><a href="/">Shop</a></li>
+                                <li><a href="/cart">Cart<span class="badge">
+                                            <%= locals.cart.totalQuantity %>
+                                        </span></a></li>
                                 <li>
                                     <form action="/logout" method="POST">
                                         <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">

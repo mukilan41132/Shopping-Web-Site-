@@ -1,6 +1,7 @@
 const addtocarrtButtonElement = document.querySelector('#product-details button');
 const Badge = document.querySelector('.nav-items .badge')
 
+
 async function addToCart() {
     const ProductID = addtocarrtButtonElement.dataset.productid;
     const csrfToken = addtocarrtButtonElement.dataset.csrf;

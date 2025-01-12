@@ -23,10 +23,9 @@ async function addCartItem(req, res) {
     });
 }
 function updateCart(req, res) {
-    console.log(req.body)
     const cart = res.locals.cart;
     const updatedItemdata = cart.UpdateItem(req.body.productId, req.body.quantity);
-    res.locals.cart = cart;
+    req.session.cart = cart;
     
     res.status(201).json({
         message: 'item Updated!',
