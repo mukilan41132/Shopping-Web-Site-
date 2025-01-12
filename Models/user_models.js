@@ -1,7 +1,5 @@
 const mongodb = require('../DataBaseConnection/MongoDbConnection');
-
-
-
+const mongodbObjectid = require('mongodb');
 const bcript = require('bcryptjs');
 
 class User {
@@ -21,17 +19,23 @@ class User {
             email: this.email
         })
     }
+    static async FindByid(userid) {
+        const uid = new mongodbObjectid.ObjectId(userid);
+        return mongodb.getDb().collection('users').findOne({
+            _id: uid
+        }, { projection: { password: 0 } })
+    }
     async existingemail() {
         const existinguser = await this.EmailValidation();
 
         if (existinguser) {
-            console.log("existingusert",existinguser)
+            console.log("existingusert", existinguser)
             return true
         } else {
-            console.log("existinguserf",existinguser)
+            console.log("existinguserf", existinguser)
             return false
         }
-       
+
     }
     passwordValidation(decriptpassword) {
         return bcript.compare(this.password, decriptpassword);

@@ -19,7 +19,11 @@
                     <p>Total:<span id="totalID">₹<%= locals.cart.totalPrice %>/--</span>
                     </p>
                     <% if (locals.isAuth) { %>
-                        <button class="btn"> Buy Product</button>
+                        <form action="/orders" method="post">
+                            <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+                            <button class="btn"> Buy Product</button>
+                        </form>
+
                         <% }else{ %>
                             <p>You need to log in to buy a product.</p>
                             <% }%>
